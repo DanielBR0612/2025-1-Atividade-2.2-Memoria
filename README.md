@@ -7,7 +7,7 @@
 - **Público alvo**: alunos da disciplina de SO (Sistemas Operacionais) do curso de TADS (Superior em Tecnologia em Análise e Desenvolvimento de Sistemas) no CNAT-IFRN (Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte - Campus Natal-Central).
 - disciplina: **SO** [Sistemas Operacionais](https://github.com/sistemas-operacionais/)
 - professor: [Leonardo A. Minora](https://github.com/leonardo-minora)
-- Repositótio do aluno: FIXME
+- Repositótio do aluno: [Daniel Braga](https://github.com/DanielBR0612)
 
 ## Tarefas do aluno
 1. Fork desse repositório e atualizar a linha 10 com o nome e link do github
@@ -68,8 +68,35 @@ Os alunos devem simular a alocação dos processos na RAM usando o algoritmo **b
 
 ### 1. Alocação Inicial com Best-Fit
 
+Após aplicar o algoritmo best-fit, os processos P1, P2 e P3 foram alocados na RAM, ocupando 60 KB. Os processos P4 e P5 não couberam.
+
+Mapa Final da RAM:
+| Ocupado por | Tamanho |
+| :--- | :--- |
+| Processo P1 | 20 KB |
+| Processo P2 | 15 KB |
+| Processo P3 | 25 KB |
+| Livre | 4 KB |
+
 ### 2. Simular Memória Virtual (Paginação)
+
+ Na RAM: P1, P2, P3.
+
+ No Disco (Memória Virtual): P4, P5.
 
 ### 3. Desfragmentação da RAM
 
- ### 4. Questões para Reflexão
+A memória já estava desfragmentada (sem buracos entre os processos). A compactação resultou em um único bloco livre de 4 KB, que ainda era pequeno demais para carregar P4 (10 KB) ou P5 (18 KB) do disco.
+
+### 4. Questões para Reflexão
+
+ Best-fit foi mais eficiente que first-fit ou worst-fit neste cenário?
+ Não. Para esta situação específica, os três algoritmos teriam produzido exatamente o mesmo resultado.
+
+ Como a memória virtual evitou um deadlock?
+ Ela evitou que o sistema travasse ou rejeitasse os processos P4 e P5 por falta de RAM. Ao colocá-los no disco, o sistema pôde continuar funcionando e executá-los mais tarde.
+
+ Qual o impacto da desfragmentação no desempenho do sistema?
+ A desfragmentação é um processo lento que consome recursos e causa pausas no sistema. Embora possa liberar um bloco de memória maior, neste caso não teve benefício prático, pois o espaço liberado foi insuficiente.
+
+
